@@ -1,0 +1,37 @@
+// This program acts to calculate the amount of ingredients needed to make a requested number of pie crusts. Alex Bailey 9/18 COP2000
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+ const double cupsFlour = 2.50 //amount of Cups of all-purpose flour in 1 pie crust
+              ,tableSugar = 1.33 //amount of Tablespoons of Sugar in 1 pie crust
+              ,tableSalt = 0.50 //amount of Tablespoons of Salt in 1 pie crust
+              ,cupsButtr = 0.875 //amount of Cups of Butter in 1 pie crust
+              ,largeEggs = 1.00 //amount of Large Eggs in 1 pie crust
+;double flour, sugar, butter, eggs; // Amount of ingredients needed in 1 pie crust 
+double pieCrust; //User input as to how many pie crusts
+double totalFlour, totalSugar, totalSalt, totalButtr, totalEggs; //End results based on input
+
+
+ cout << "How many Pie Crusts do you wish to make?" << endl; //User input request
+ cin >> pieCrust; //Actual input
+  pieCrust = 6; //Sample input
+ 
+  totalFlour = cupsFlour * pieCrust; //Total flour needed
+  totalSugar = tableSugar * pieCrust; //Total sugar needed
+  totalSalt = tableSalt * pieCrust; //Total salt needed
+  totalButtr = cupsButtr * pieCrust; //Total butter needed
+  totalEggs = largeEggs * pieCrust; //Total eggs needed 
+ 
+ cout << "You will need:" << endl; //End results of required amount of each ingredient
+    cout << totalFlour << " Cups of Flour" << endl;
+    cout << totalSugar << " Tablespoons of Sugar" << endl;
+    cout << totalSalt << " Tablespoons of Salt" << endl;
+    cout << totalButtr << " Cups of Butter" << endl;
+    cout << totalEggs <<  " Large Eggs" << endl;
+    cout << "To make " << pieCrust << " pie crusts.";
+   
+   return 0;
+}

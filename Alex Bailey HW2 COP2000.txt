@@ -1,0 +1,76 @@
+#include <iostream>
+
+using namespace std;
+
+//Alex Bailey COP2000 HW2
+//This program finds the area of different room shapes
+
+int main()
+{
+    int menu_Input = 0;
+    float length_Room = 0;
+    float width_Room = 0;
+    float radius_Room = 0;
+    
+    cout << "Haverly's Room Calculator" << endl;
+    
+    cout << "===== Menu =====" << endl;
+    cout << "1: Square Room" << endl;
+    cout << "2: Rectangle Room" << endl;
+    cout << "3: Round Room" << endl;
+    cout << "4: Quit" << endl;
+    
+    cin >> menu_Input;
+    
+    /*
+    Code for input validization
+    */
+    
+    switch(menu_Input)
+    {
+        case 1:
+        cout << "===== Square Room =====";
+        cout << "Length of Room (In Square Feet)" << endl;
+        cin >> length_Room;
+        
+        while(length_Room <=0)
+        {
+            cout << "Invalid Input!! Input value cannot be negative (-)" << endl;
+            cin >> length_Room;
+        }
+        cout << "The area of the room is " << (length_Room * length_Room) << " sq. ft" << endl;
+    
+    
+        case 2:
+        cout << "===== Rectangle Room =====" << endl;
+        cout << "Length of Room (In Square Feet)" << endl;
+        cout << "Width of Room (In Square Feet)" << endl;
+        cin >> length_Room; 
+        cin >> width_Room;
+        
+        while(width_Room <=0)
+        {
+            cout << "Invalid !! Input value cannot be negative (-)" << endl;
+            cin >> width_Room;
+        }
+        cout << "The area of the room is " << (length_Room * width_Room) << " sq. ft" << endl;
+        
+        case 3:
+        cout << "===== Circle Room =====" << endl;
+        cout << "Radius of Room (In Feet)" << endl;
+        cin >> radius_Room;
+        
+        while(radius_Room <=0)
+        {
+            cout << "Invalid !! Input value cannot be negative (-)" << endl;
+            cin >> width_Room;
+        }
+        cout << "The area of the room is " << (3.14 * (radius_Room * radius_Room)) << " sq. ft" << endl;
+        
+        case 4:
+        cout << "Goodbye! :)" << endl;
+    }
+    
+    
+    return 0;
+}

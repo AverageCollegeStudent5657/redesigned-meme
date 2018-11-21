@@ -1,0 +1,71 @@
+//Alex Bailey COP2000 HW 3
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+
+{
+       const int golD = 1, 
+       silveR = 2, 
+       bronzE = 3, 
+       dundunGetAway = 4;
+       
+       
+       const double Gold = 1.01,
+        Silver = 1.02,
+        Bronze = 1.04,
+        BasePrice = 1200.00;
+        
+       double fees = 0;
+   
+   int member = 0;
+   int year;
+   
+   
+   cout << "Welcome to Ronda's Strikeforce Gym!!" << endl;
+   cout << "X----------------------------------X" << endl; 
+   cout << "Membership Fee Calculator" << endl;
+   cout << "1. Gold" << endl;
+   cout << "2. Silver" << endl;
+   cout << "3. Bronze" << endl;
+   cout << "4. Quit" << endl;
+   cout << "Please Enter a Number Between 1 and 3. Press 4 to Exit." << endl;
+   
+   cin >> member;
+  
+  
+   if (member != dundunGetAway)
+   {
+   switch(member)
+    {
+        case 1:
+            fees = BasePrice * Gold;
+            break;
+        
+        case 2:
+            fees = BasePrice * Silver;
+            break;
+       
+        case 3:
+            fees = BasePrice * Bronze;
+        default:
+            break;
+    }
+    
+   while (year <= 10)
+        {
+            cout << setprecision(2) << fixed << "Year " <<  year << "    "<< (BasePrice + fees) << endl;
+            year++;
+        }
+    year = 1;
+   }
+   
+
+
+
+
+    
+    return 0;
+}

@@ -1,0 +1,187 @@
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int beginGame(int playedBoard[]);
+void instructions();
+void displayBoard(int board[][3]);
+bool testWinner(int ans, int boardNum, int ansBoard[]);
+
+int main()
+{
+	int board0[4][3] = { {38, 11, 83,},
+						{53, 8, 44 },
+						{99, 18, 99},
+						{25, NULL, 43} };
+						   
+	int board1[4][3] = { { 28, 10, 55, },
+	                     { 34, 7, 70 },
+	                     { 66, 12, 48 },
+	                     { 69, NULL, 78 } };
+
+	int board2[4][3] = { { 11, 2, 20, },
+	                     { 50, 5, 23 },
+	                     { 86, 14, 77 },
+	                     { 88, NULL, 97 } };
+
+	int ansBoard[3] = { 7, 15, 16 };
+	int playedBoard[3] = { NULL };
+	int ans;
+	int wins = 0;
+	int guesses = 0;
+	int boardNum;
+	bool winner;
+
+	cout << setprecision(2) << fixed << showpoint;
+
+	instructions();
+
+	do
+	{
+		boardNum = beginGame(playedBoard);  
+		guesses = 0;
+
+		do
+		{
+
+			switch (boardNum)
+			{
+			case 0:
+				displayBoard(board0);
+				break;
+			case 1:
+				displayBoard(board1);
+				break;
+			case 2:
+				displayBoard(board2);
+				break;
+			}
+
+
+			cout << "Enter Guess or 0 to Exit ";
+
+			cin >> ans;
+
+			while (ans < 0)
+			{
+				cout << "Sorry, invalid number. Guess a digit greater than 0, or enter 0 to Exit";
+				cin >> ans;
+			}
+
+			if (ans == 0)
+			{
+				cout << "Thank you for playing, have a nice day";
+				return 0;
+			}
+
+			winner = testWinner(ans, boardNum, ansBoard);
+
+			{
+			if (winner)
+			{   
+				wins += 1;
+				playedBoard[boardNum] = 1;
+				
+				if (wins == 3)
+				{
+					cout << "*** You are the number guessing champion!! CONGRATULATIONS!! *** " << endl;
+					return 0;
+				}
+				cout << "Do you wish to play Again? Enter 0 to Exit, or any number to continue...\n";
+				cin >> ans;
+				
+				if (ans == 0) 
+				{
+					cout << "Thank you for playing, have a nice day";
+					return 0;
+				}
+
+
+			}
+			 else
+			 {
+				guesses += 1;
+			 }
+			}
+
+		} while (winner != true && guesses < 3);
+
+		if (guesses == 3)
+		{
+			cout << "Sorry... You are out of Guesses...\n";
+			cout << "Do you wish to play again? Enter 0 to Exit, or any number to continue...\n";
+			cin >> ans;
+
+			if (ans == 0)
+			{
+				cout << "Thank you for playing, have a nice day";
+				return 0;
+			}
+		}
+
+
+
+	} while (wins < 3);	
+
+}
+
+int beginGame(int playedBoard[])
+{
+	int randomNum;
+	srand(time(0));
+	
+	do
+	{
+		randomNum = (rand() % (2 - 0 + 1)) + 0;
+		if (playedBoard[randomNum] == NULL)
+			return randomNum;
+	}
+	while (playedBoard[randomNum] != NULL);
+	
+	
+}
+
+void displayBoard(int board[][3])
+{
+	int row = 4;
+	int col = 3;
+
+	for (int x = 0; x < row; x++)
+	{
+		for (int y = 0; y < col; y++)
+		{
+			if (board[x][y] == NULL)
+				cout << setw(8) << "?";
+			else
+				cout << setw(8) << board[x][y];
+		}
+		cout << endl;
+	}
+}
+
+bool testWinner(int ans, int boardNum, int ansBoard[])
+{
+	if (ans == ansBoard[boardNum])
+	{
+		cout << "You are a number genius!!\n" << endl;
+		return true;
+	}
+	else
+	{
+		cout << "I am sorry that was incorrect...\n" << endl;
+		return false;
+	}
+}
+
+void instructions()
+{
+	cout << " ******************************************************************" << endl;
+	cout << "                           MISSING NUMBERS GAME                    " << endl;
+	cout << "                              A fun brain game....                 " << endl;
+	cout << "                                                                   " << endl;
+	cout << "     Please Enter a whole number to guess the missing number...    " << endl;
+	cout << "                    Program Developed by : Alex Bailey "             << endl;
+	cout << " ******************************************************************" << endl;
+}
