@@ -1,3 +1,5 @@
+//Alex Bailey
+//COP2000 HW5
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>
